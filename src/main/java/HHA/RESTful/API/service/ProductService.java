@@ -13,11 +13,13 @@ public class ProductService {
 	@Autowired
 	private ProductRepository repo;
 	
-	public List<Product> listAllProductsByCategory(int cateId) {
-		return repo.findAllByCategory(cateId);
-	}
-	
-	public List<Product> listAllProducts() {
+	public List<Product> listAllProducts(String filter) {
+		if ( filter != null ) {
+//			String field = filter.split(":")[0];
+//			String operator = filter.split(":")[1];
+			String val = filter.split(":")[2];
+			return repo.findAll(val);
+		}
 		return repo.findAll();
 	}
 }
