@@ -15,7 +15,7 @@ public class ProductController {
 	private ProductService service;
 	
 	@GetMapping("/products")
-	public Page<Product> list(@Param("filter") String filter) {
-		return service.listAllProducts(0,"name",filter);
+	public Page<Product> list(@Param("filter") String filter,@Param("page") String page) {
+		return service.listAllProducts(page,"name",filter);
 	}
 }
